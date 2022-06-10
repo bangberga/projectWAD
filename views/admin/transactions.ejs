@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaction</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/admin.css" />
+    <link rel="stylesheet" href="/styles/transactions.css" />
+    <script src="/script/showhide.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <%- include('./navbar.ejs') %>
+      <div class="form-section">
+        <section class="container">
+          <% if(transactions.length) { %> <% for(let i = 0; i <
+          transactions.length; i++) { %>
+          <article>
+            <h4 class="trans-id"><%= transactions[i].transaction_id %></h4>
+            <div class="client-info">
+              <h4 class="client-id">
+                client id: <%= transactions[i].client_id %>
+              </h4>
+              <hr />
+              <div class="basic">
+                <p><span>Name:</span> <%= transactions[i].client_name %></p>
+                <p><span>Email:</span> <%= transactions[i].client_email %></p>
+                <p><span>Phone:</span> <%= transactions[i].client_phone %></p>
+              </div>
+              <p><span>Address:</span> <%= transactions[i].client_address %></p>
+              <p class="message">
+                <span>Message:</span> <%= transactions[i].message %>
+              </p>
+            </div>
+            <div class="transaction-info">
+              <h4 class="amount">
+                Amount:
+                <span class="price">$<%= transactions[i].amount %></span>
+              </h4>
+              <hr class="underline-price" />
+              <p class="highlight">
+                <span>Payment:</span> <%= transactions[i].payment %>
+              </p>
+              <p class="highlight">
+                <span>Date:</span> <%= transactions[i].transaction_created %>
+              </p>
+              <a
+                href="/admin/transactions/<%= transactions[i].transaction_id %>"
+                class="btn"
+                >view order</i
+              ></a>
+            </div>
+          </article>
+          <% } %> <% } else { %>
+          <div class="empty">
+            <h1>Transaction is empty</h1>
+          </div>
+          <% } %>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/about.css" />
+  </head>
+  <body>
+    <%- include('./navbar.ejs', { links, cart, login, logout, checkout }) %>
+    <main>
+      <section class="page-hero">
+        <div class="section-center">
+          <h3><a href="/">Home </a>/ About</h3>
+        </div>
+      </section>
+      <section class="page section section-center">
+        <img src="../images/hero-bcg.a876f19f.jpeg" alt="nice desk" />
+        <article>
+          <div class="title">
+            <h2>our story</h2>
+            <div class="underline"></div>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas soluta
+            pariatur quae mollitia facilis omnis. Sequi amet at tempore nihil
+            enim, molestias commodi accusantium cumque aperiam maiores!
+            Voluptatem esse laudantium soluta ex optio explicabo ipsam assumenda
+            voluptate eaque, iusto tempore repellendus blanditiis neque a
+            doloribus aspernatur? Cum vel molestias architecto repellendus dicta
+            voluptatem? Dolore nulla vero deleniti aut expedita ad ratione,
+            sequi non dolor. Cupiditate ipsam corporis inventore maiores commodi
+            doloremque, iure error natus ducimus, ipsum, hic quasi odit quas!
+          </p>
+        </article>
+      </section>
+    </main>
+    <%- include('./footer.ejs')%>
+  </body>
+</html>

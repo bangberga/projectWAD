@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #fff;
+  color: hsl(209, 61%, 16%);
+  line-height: 1.5;
+  font-size: 0.875rem;
+  width: 100vw;
+  height: 100vh;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+hr {
+  border: none;
+  border-top: 1px solid hsl(210, 31%, 80%);
+}
+strong {
+  color: red;
+}
+button {
+  cursor: pointer;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: hsl(209, 34%, 30%);
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+
+.section {
+  padding: 5rem 0;
+}
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+}
+
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
+}
+.text-center {
+  text-align: center;
+}
+
+.btn {
+  text-transform: uppercase;
+  background: hsl(22, 31%, 52%);
+  color: hsl(22, 31%, 88%);
+  padding: 0.375rem 0.75rem;
+  letter-spacing: 0.1rem;
+  display: inline-block;
+  font-weight: 400;
+  transition: all 0.3s linear;
+  font-size: 0.875rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  border-color: transparent;
+}
+
+.btn:hover {
+  color: hsl(22, 28%, 21%);
+  background: hsl(22, 31%, 67%);
+}
+
+.title {
+  text-align: center;
+}
+.title .underline {
+  width: 6rem;
+  height: 0.25rem;
+  background: hsl(22, 31%, 52%);
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-100 {
+  min-height: calc(100vh - 10rem);
+  padding: 5rem 0;
+}
+.page {
+  min-height: calc(100vh - (20vh + 10rem));
+}
+
+#spinner {
+  z-index: 100;
+}
+
+#spinner:not([hidden]) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#spinner::after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  border: 4px solid #b7b7b7;
+  border-top: 4px solid hsl(21, 62%, 41%);
+  border-radius: 100%;
+  will-change: transform;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.discount {
+  text-decoration: line-through;
+}
+.newprice {
+  position: relative;
+}
+.percent {
+  opacity: 0;
+  transition: all 0.2s linear;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ab7a5f;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+.newprice:hover .percent {
+  opacity: 1;
+}
+
+.footer {
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #222;
+  text-align: center;
+}
+.footer span {
+  color: hsl(22, 31%, 52%);
+}
+
+.footer h5 {
+  color: #fff;
+  margin: 0.1rem;
+  font-weight: 400;
+  text-transform: none;
+  line-height: 1.25;
+}
+@media (min-width: 776px) {
+  .footer {
+    flex-direction: row;
+  }
+}
+
+.page-hero {
+  background: hsl(22, 31%, 88%);
+  width: 100%;
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+  color: hsl(22, 28%, 21%);
+}
+.page-hero a {
+  color: hsl(22, 28%, 37%);
+  padding: 0.5rem;
+  transition: all 0.3s linear;
+}
+.page-hero a:hover {
+  color: hsl(22, 28%, 21%);
+}
+
+.empty {
+  text-align: center;
+}
+.empty h2 {
+  margin-bottom: 1rem;
+  text-transform: none;
+}

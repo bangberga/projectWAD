@@ -1,0 +1,410 @@
+main {
+  width: 100%;
+  min-height: 100%;
+  display: grid;
+  background: #fff;
+}
+@media (min-width: 840px) {
+  main {
+    grid-template-columns: 15rem 1fr;
+  }
+  .close-btn,
+  .open-btn {
+    display: none;
+  }
+}
+@media (max-width: 839px) {
+  .close-btn {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .open-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 98;
+  }
+  .sidebar-nav {
+    position: fixed;
+    z-index: 99;
+    inset: 0;
+    transform: translateY(-150%);
+  }
+  .show-sidebar {
+    transform: translateY(0);
+  }
+}
+.sidebar-nav {
+  display: grid;
+  align-items: flex-start;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  background: #fff;
+  transition: all 0.3s linear;
+}
+.sidebar-nav div {
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.close-btn,
+.open-btn {
+  width: 3rem;
+  height: 3rem;
+  color: hsl(360, 67%, 44%);
+  transition: all 0.3s linear;
+  border: none;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: transparent;
+}
+.close-btn:hover,
+.open-btn:hover {
+  color: hsl(360, 71%, 66%);
+}
+.open-btn {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: #fff;
+  box-shadow: 0 0 15px rgb(201, 201, 201);
+  border-radius: 0.25rem;
+  animation: move 4s linear infinite reverse forwards;
+}
+@keyframes move {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.sidebar-nav .auth hr {
+  margin-bottom: 3rem;
+  color: rgb(200, 200, 200);
+}
+.sidebar-nav .links {
+  display: grid;
+  gap: 3rem 1rem;
+}
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  color: #222;
+  transition: all 0.3s linear;
+}
+.sidebar-nav a i {
+  padding-right: 5px;
+}
+.sidebar-nav a:hover {
+  transform: translateX(1rem);
+  color: hsl(210, 22%, 49%);
+}
+
+.form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(210, 36%, 96%);
+  padding-top: 3.5rem;
+  padding: 5rem 0;
+}
+.form-section section {
+  min-width: max-content;
+  min-height: max-content;
+  padding: 3rem;
+  border-radius: 0.25rem;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 0 15px rgb(160, 160, 160);
+}
+.form-section section h1 {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+.form-section section form div {
+  margin: 1rem 0;
+}
+.form-section section form div label {
+  font-size: 1.2rem;
+}
+.form-section section form div .normal {
+  display: flex;
+  align-items: center;
+  background: hsl(22, 31%, 88%);
+  border-radius: 0.25rem;
+}
+.form-section section form div div i {
+  padding: 1rem;
+}
+.form-section section form div .normal input {
+  background: hsl(22, 31%, 88%);
+  border: none;
+  outline: none;
+  display: inline-block;
+  width: 100%;
+  height: 3rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px hsl(22, 31%, 88%) inset !important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-section section form div .select select {
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  flex: 1;
+  padding: 0 1em;
+  color: #222;
+  background-color: inherit;
+  background-image: none;
+  cursor: pointer;
+}
+/* Remove IE arrow */
+.form-section section form div .select select::-ms-expand {
+  display: none;
+}
+/* Custom Select wrapper */
+.form-section section form div .select {
+  position: relative;
+  display: flex;
+  background: hsl(22, 31%, 88%);
+  width: 100%;
+  height: 2em;
+  border-radius: 0.25em;
+  overflow: hidden;
+}
+/* Arrow */
+.form-section section form div .select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.4em;
+  background-color: hsl(22, 31%, 67%);
+  transition: 0.3s all linear;
+  pointer-events: none;
+}
+/* Transition */
+.form-section section form div .select:hover::after {
+  color: hsl(22, 31%, 88%);
+}
+
+.form-section section form div .colors #swatch {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  box-shadow: 1em 1em 10px rgb(200, 200, 200);
+}
+.form-section section form div .colors #swatch .info {
+  padding: 5px;
+  width: 100%;
+  height: max-content;
+}
+.form-section section form div .colors #swatch h1 {
+  text-align: start;
+  margin: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.form-section section form div .colors #swatch h2 {
+  font-weight: normal;
+  font-size: 0.8rem;
+  margin: 0;
+}
+input[type="color"] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  height: 3rem;
+  padding: 0;
+  width: 100%;
+}
+*:focus {
+  border-radius: 0;
+  outline: none;
+}
+::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+::-webkit-color-swatch {
+  border: 0;
+  border-radius: 0;
+}
+::-moz-color-swatch,
+::-moz-focus-inner {
+  border: 0;
+}
+::-moz-focus-inner {
+  padding: 0;
+}
+.choosenColors {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+.choosenColors div {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.choosenColors div i {
+  color: #fff;
+  font-size: 1rem;
+  opacity: 0;
+  transition: all 0.3s linear;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.choosenColors div:hover i {
+  opacity: 1;
+}
+.fail,
+.success {
+  border-radius: 0.25rem;
+  width: 100%;
+  min-height: 2rem;
+  text-align: center;
+  margin: 1rem 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fail {
+  background: #f3c0c2;
+  color: #b71c1c;
+}
+.success {
+  background: #c9f3c0;
+  color: #4dba46;
+}
+
+[type="file"] {
+  /* Style the color of the message that says 'No file chosen' */
+  color: #878787;
+}
+[type="file"]::-webkit-file-upload-button {
+  background: hsl(22, 31%, 88%);
+  border: none;
+  border-radius: 4px;
+  color: #222;
+  cursor: pointer;
+  font-size: 12px;
+  outline: none;
+  text-transform: uppercase;
+  transition: all 0.3s linear;
+  height: 3rem;
+}
+[type="file"]::-webkit-file-upload-button:hover {
+  background: hsl(22, 31%, 52%);
+  color: hsl(22, 31%, 88%);
+}
+textarea {
+  background: hsl(22, 31%, 88%);
+  border: none;
+  outline: none;
+  display: inline-block;
+  width: 100%;
+  border-radius: 0.25rem;
+  height: 150px;
+  border: 0.25rem;
+  padding: 10px;
+  min-height: 150px;
+  max-height: 250px;
+}
+.choosenImages {
+  display: flex;
+  flex-wrap: wrap;
+}
+.choosenImages img {
+  margin-right: 3rem;
+  width: 10rem;
+  height: 15rem;
+}
+img {
+  border-radius: 0.25rem;
+  object-fit: cover;
+}
+.editBtn,
+.deleteBtn {
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.25rem;
+  width: 25px;
+  height: 25px;
+  margin: 0 3px;
+}
+.deleteBtn {
+  background: #dd2424;
+}
+.editBtn {
+  background: #4bb443;
+}
+.deleteBtn i,
+.editBtn i {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  width: 100%;
+  padding: 2rem;
+  border-radius: 0.25rem;
+  background: hsl(22, 31%, 88%);
+  text-align: center;
+}
+table thead tr {
+  text-transform: uppercase;
+  color: hsl(22, 31%, 52%);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+table thead tr th {
+  padding-bottom: 1rem;
+}
+table tbody tr td {
+  color: #222;
+  text-transform: capitalize;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

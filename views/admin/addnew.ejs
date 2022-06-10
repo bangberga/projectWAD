@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add new <%= type %></title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/admin.css" />
+    <link rel="stylesheet" href="/styles/editform.css" />
+    <script src="/script/setAction.js" defer></script>
+  </head>
+  <body>
+    <main data-type="<%= type %>">
+      <%- include('./navbar.ejs') %>
+      <div class="form-section">
+        <section>
+          <h1>Add new <%= type %></h1>
+          <form action="/admin/addProduct/addNew<%= type %>" method="post">
+            <div>
+              <label for="<%= type %>"><%= type %> name:</label>
+              <div class="normal">
+                <i class="bx bx-edit"></i>
+                <input type="text" name="name" required />
+              </div>
+            </div>
+            <% if(type === 'Discount') { %>
+            <div discount>
+              <label for="percent">Discount percent (%):</label>
+              <div class="normal">
+                <i class="bx bxs-discount"></i>
+                <input type="text" name="percent" id="percent" />
+              </div>
+            </div>
+            <% } %> <% if(messages.successMsg) { %>
+            <strong class="success"><%= messages.successMsg %></strong>
+            <% } %>
+            <button type="submit" class="submitBtn btn">Submit</button>
+          </form>
+          <h1><%= type %> Table</h1>
+          <form
+            method="post"
+            action="/admin/addProduct/delete<%= type %>?_method=DELETE"
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <% if(type === 'Discount') { %>
+                  <th>Percent</th>
+                  <% } %>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(let i = 0; i < data.length; i++) { %>
+                <tr class="row">
+                  <td><%= data[i].id %></td>
+                  <td><%= data[i].name %></td>
+                  <% if(type === 'Discount') { %>
+                  <td><%= data[i].percent * 100 %>%</td>
+                  <% } %>
+                  <td class="actions">
+                    <button type="button" class="editBtn">
+                      <i class="bx bx-edit"></i>
+                    </button>
+                    <button type="submit" name="deletedID" class="deleteBtn">
+                      <i class="bx bx-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+            <% if(messages.deleteSuccessMsg) { %>
+            <strong class="success"><%= messages.deleteSuccessMsg %></strong>
+            <% } %> <% if(messages.editSuccessMsg) { %>
+            <strong class="success"><%= messages.editSuccessMsg %></strong>
+            <% } %>
+          </form>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

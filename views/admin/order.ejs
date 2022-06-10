@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/admin.css" />
+    <link rel="stylesheet" href="/styles/edit.css" />
+  </head>
+  <body>
+    <main>
+      <%- include('./navbar.ejs') %>
+      <div class="form-section">
+        <section class="container">
+          <% if(products.length) { %> <% for(let i = 0; i < products.length;
+          i++) { %>
+          <article>
+            <div class="img-container">
+              <img
+                src="/images/<%= products[i].image_link %>"
+                alt="<%= products[i].product_name %>"
+                class="img-product"
+              />
+            </div>
+            <aside>
+              <div class="info">
+                <p class="id">
+                  <span>Order id:</span> <%= products[i].order_id %>
+                </p>
+                <p><span>Name:</span> <%= products[i].product_name %></p>
+                <p><span>Price:</span> $<%= products[i].amount %></p>
+                <p><span>Number of order:</span> <%= products[i].qty %></p>
+              </div>
+              <div class="type">
+                <p><span>Category:</span> <%= products[i].category_name %></p>
+                <p><span>Company:</span> <%= products[i].company_name %></p>
+                <p>
+                  <span>Unit price:</span> $<%=
+                  (products[i].qty*products[i].amount).toFixed(2) %>
+                </p>
+              </div>
+              <div class="total">
+                <p><span>Total(Not discount):</span> $<%= max.sum %></p>
+                <p class="final-section">
+                  <span>Total(including discount):</span>
+                  <span class="final"
+                    >$<%= products[i].transaction_total %></span
+                  >
+                </p>
+              </div>
+            </aside>
+          </article>
+          <% } %> <% } else { %>
+          <article class="empty-stock">
+            <div>
+              <h1>Empty Transaction</h1>
+            </div>
+          </article>
+          <% } %>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

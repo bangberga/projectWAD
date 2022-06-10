@@ -1,0 +1,243 @@
+.section-center > div:first-of-type {
+  display: none;
+}
+@media (min-width: 776px) {
+  .section-center > div:first-of-type {
+    display: block;
+  }
+  .section-center > div:first-of-type .content {
+    display: grid;
+    grid-template-columns: 316px 1fr 1fr 1fr auto;
+    justify-items: center;
+    column-gap: 1rem;
+  }
+  .section-center > div:first-of-type .content h5 {
+    color: hsl(210, 22%, 49%);
+    font-weight: 400;
+  }
+}
+.section-center > div:first-of-type .content span {
+  width: 2rem;
+  height: 2rem;
+}
+hr {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.section-center > article {
+  display: grid;
+  grid-template-columns: 200px auto auto;
+  grid-template-rows: 75px;
+  gap: 3rem 1rem;
+  justify-items: center;
+  margin-bottom: 3rem;
+  align-items: center;
+}
+.section-center > article .subtotal {
+  display: none;
+}
+.section-center > article .price {
+  display: none;
+}
+.section-center > article .title {
+  grid-template-rows: 75px;
+  display: grid;
+  grid-template-columns: 75px 125px;
+  align-items: center;
+  text-align: left;
+  gap: 1rem;
+}
+.section-center > article .title img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 0.25rem;
+  object-fit: cover;
+}
+.section-center > article h5 {
+  font-size: 0.75rem;
+  margin-bottom: 0;
+}
+.section-center > article .title .color {
+  color: hsl(210, 22%, 49%);
+  font-size: 0.75rem;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.section-center > article .title .color span {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: red;
+  margin-left: 0.5rem;
+  border-radius: 0.25rem;
+}
+.price-small {
+  color: hsl(22, 31%, 52%);
+}
+.section-center > article .amount-btns {
+  width: 75px;
+}
+.section-center > article .amount-btns button {
+  width: 1rem;
+  height: 0.5rem;
+  font-size: 0.75rem;
+}
+.section-center > article .amount-btns h2 {
+  font-size: 1rem;
+}
+.section-center > article .remove-btn {
+  color: #fff;
+  background: transparent;
+  border: transparent;
+  letter-spacing: 0.1rem;
+  background: hsl(360, 67%, 44%);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+@media (min-width: 776px) {
+  .section-center > article .subtotal {
+    display: block;
+    margin-bottom: 0;
+    color: hsl(210, 22%, 49%);
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  .price-small {
+    display: none;
+  }
+  .section-center > article .price {
+    display: block;
+    font-size: 1rem;
+    color: hsl(22, 31%, 52%);
+    font-weight: 400;
+  }
+  .section-center > article .title .name {
+    font-size: 0.85rem;
+  }
+  .section-center > article .title .color {
+    font-size: 0.85rem;
+  }
+  .section-center > article .title .color span {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+  .section-center > article {
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    align-items: center;
+    grid-template-rows: 75px;
+  }
+  .section-center > article .title img {
+    height: 100%;
+  }
+  .section-center > article .title {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 100px 200px;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+  }
+  .section-center > article .amount-btns {
+    width: 100px;
+  }
+  .section-center > article .amount-btns button {
+    width: 1.5rem;
+    height: 1rem;
+    font-size: 1rem;
+  }
+  .section-center > article .amount-btns h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.link-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.link-btn {
+  background: transparent;
+  border-color: transparent;
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+  background: hsl(22, 31%, 52%);
+  color: #fff;
+  border-radius: 0.25rem;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+.clear-btn {
+  background: #222;
+}
+
+.section-center article .amount-btns {
+  display: grid;
+  width: 140px;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+.section-center article h2 {
+  margin-bottom: 0;
+}
+.section-center article button {
+  background: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  padding: 1rem 0;
+  width: 2rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-center article .amount-btn i {
+  font-size: 1.5rem;
+}
+
+.section-center section {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+.section-center section div article {
+  border: 1px solid hsl(210, 31%, 80%);
+  border-radius: 0.25rem;
+  padding: 1.5rem 3rem;
+}
+.section-center section div h4,
+.section-center section div h5,
+.section-center section div p {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.section-center section div p {
+  text-transform: capitalize;
+}
+.section-center section div h4 {
+  margin-top: 2rem;
+}
+@media (min-width: 776px) {
+  .section-center section {
+    justify-content: flex-end;
+  }
+}
+.section-center section div .btn {
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 700;
+}

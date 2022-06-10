@@ -1,0 +1,29 @@
+.section {
+  display: grid;
+  gap: 4rem;
+}
+.section img {
+  width: 100%;
+  display: block;
+  border-radius: 0.25rem;
+  height: 500px;
+  object-fit: cover;
+}
+.section p {
+  line-height: 2;
+  max-width: 45em;
+  margin: 0 auto;
+  margin-top: 2rem;
+  color: hsl(210, 22%, 49%);
+}
+.section .title {
+  text-align: left;
+}
+.section .underline {
+  margin-left: 0;
+}
+@media (min-width: 992px) {
+  .section {
+    grid-template-columns: 1fr 1fr;
+  }
+}

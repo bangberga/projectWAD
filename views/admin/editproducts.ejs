@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit products</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/admin.css" />
+    <link rel="stylesheet" href="/styles/edit.css" />
+    <script src="/script/showhide.js" defer></script>
+    <script src="/script/editproducts.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <%- include('./navbar.ejs') %>
+      <div class="form-section">
+        <section class="container">
+          <% if(products.length) { %> <% for(let i = 0; i < products.length;
+          i++) { %>
+          <article>
+            <div class="img-container">
+              <img
+                src="../images/<%= products[i].image_link %>"
+                alt="<%= products[i].product_name %>"
+                class="img-product"
+              />
+              <div class="icon-btns">
+                <a
+                  href="/admin/editProducts/<%= products[i].id %>"
+                  class="editBtn"
+                  ><i class="bx bx-edit"></i
+                ></a>
+                <button
+                  class="deleteBtn"
+                  onclick="deleteProduct('<%= products[i].id %>')"
+                >
+                  <i class="bx bxs-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+            <aside>
+              <div class="info">
+                <p class="id"><span>Id:</span> <%= products[i].id %></p>
+                <p><span>Name:</span> <%= products[i].product_name %></p>
+                <p><span>Price:</span> $<%= products[i].price %></p>
+                <p><span>Quantity:</span> <%= products[i].qty %></p>
+              </div>
+              <div class="type">
+                <p><span>Category:</span> <%= products[i].category_name %></p>
+                <p><span>Company:</span> <%= products[i].product_name %></p>
+                <p><span>Discount:</span> <%= products[i].discount * 100 %>%</p>
+              </div>
+              <div class="desc">
+                <p class="message">
+                  <span>Description:</span> <%= products[i].description %>
+                </p>
+              </div>
+            </aside>
+          </article>
+          <% } %> <% } %> <% if(nullProducts.length) { %>
+          <article class="separate">
+            <h1>These products has a <span class="null">NULL</span> value</h1>
+          </article>
+          <% for(let i = 0; i < nullProducts.length; i++) { %>
+          <article class="null-product">
+            <div class="img-container">
+              <img
+                src="../images/<%= nullProducts[i].image_link %>"
+                alt="<%= nullProducts[i].product_name %>"
+                class="img-product"
+              />
+              <div class="icon-btns">
+                <a
+                  href="/admin/editProducts/<%= nullProducts[i].id %>"
+                  class="editBtn"
+                  ><i class="bx bx-edit"></i
+                ></a>
+                <button
+                  class="deleteBtn"
+                  onclick="deleteProduct('<%= nullProducts[i].id %>')"
+                >
+                  <i class="bx bxs-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+            <aside>
+              <div class="info">
+                <p><span>Id:</span> <%= nullProducts[i].id %></p>
+                <p><span>Name:</span> <%= nullProducts[i].product_name %></p>
+                <p><span>Quantity:</span> <%= nullProducts[i].qty %></p>
+              </div>
+              <div class="type">
+                <p>
+                  <span>Category:</span> <%= nullProducts[i].category_name %>
+                </p>
+                <p><span>Company:</span> <%= nullProducts[i].product_name %></p>
+                <p><span>Discount:</span> <span class="null">NULL</span></p>
+              </div>
+              <div class="desc">
+                <p class="message">
+                  <span>Description:</span> <%= nullProducts[i].description %>
+                </p>
+              </div>
+            </aside>
+          </article>
+          <% } %> <% } %> <% if(products.length === 0 && nullProducts.length ===
+          0) { %>
+          <article class="empty-stock">
+            <div>
+              <h1>Empty Stock</h1>
+              <a href="/admin/addProduct" class="btn">fill it</a>
+            </div>
+          </article>
+          <% } %>
+        </section>
+      </div>
+      <% if(messages.message) { %>
+      <div class="popup">
+        <section>
+          <p><%= messages.message %></p>
+        </section>
+      </div>
+      <script>
+        setTimeout(() => {
+          document.querySelector(".popup").remove();
+        }, 3000);
+      </script>
+      <% } %>
+    </main>
+  </body>
+</html>

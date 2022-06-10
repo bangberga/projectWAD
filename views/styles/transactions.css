@@ -1,0 +1,96 @@
+.form-section,
+.form-section section {
+  padding: 0;
+}
+.form-section .container {
+  display: grid;
+  gap: 1rem 0;
+  width: 100%;
+  box-shadow: none;
+  background-color: hsl(210, 36%, 96%);
+  padding: 1rem;
+}
+.form-section .container article {
+  position: relative;
+  padding: 7px;
+  display: grid;
+  gap: 1rem 0;
+  grid-template-columns: 4rem 2fr 1fr;
+  background: #fff;
+  border-radius: 0.25rem;
+}
+
+@media screen and (max-width: 1132px) {
+  .form-section .container article {
+    grid-template-columns: 4rem 2fr;
+  }
+  .transaction-info {
+    grid-column-start: 2;
+    grid-column-end: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  p {
+    margin: 0;
+  }
+  .underline-price {
+    display: none;
+  }
+}
+hr {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+h4 {
+  margin: 0;
+}
+p span {
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+}
+.trans-id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #e19f35;
+}
+.client-id,
+.amount {
+  align-items: center;
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.client-info {
+  max-width: 769.33px;
+}
+.basic {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+.message {
+  width: 100%;
+}
+.text-btn {
+  border: none;
+  font-size: inherit;
+  color: rgb(0, 169, 169);
+  background: transparent;
+  padding-left: 5px;
+}
+.price {
+  color: hsl(22, 31%, 60%);
+}
+.highlight span {
+  color: #fdac14;
+  font-weight: 700;
+  font-size: 0.8rem;
+  font-style: italic;
+  text-decoration: underline;
+  text-transform: uppercase;
+}

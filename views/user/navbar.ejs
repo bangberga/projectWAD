@@ -1,0 +1,92 @@
+<nav>
+  <div class="nav-center">
+    <div class="nav-header">
+      <a href="/">
+        <img src="../images/logo.svg" alt="logo" />
+      </a>
+      <button type="button" class="nav-toggle">
+        <i class="bx bx-menu"></i>
+      </button>
+    </div>
+    <ul class="nav-links">
+      <% for(let i = 0; i < links.length; i++) { %>
+      <li><a href="<%= links[i].url %>"><%= links[i].name %></a></li>
+      <% } if(checkout) { %>
+      <li><a href="<%= checkout[0].url %>"><%= checkout[0].name %></a></li>
+      <% } %>
+    </ul>
+    <div class="cart-btn-wrapper">
+      <a href="<%= cart?.[0].url %>" class="cart-btn">
+        <%= cart?.[0].name %>
+        <span class="cart-container">
+          <i class="bx bxs-cart"></i>
+          <span class="cart-value">0</span>
+        </span>
+      </a>
+      <% if(login) { %>
+      <a href="/user<%= login[0].url %>" class="auth-btn"
+        ><%= login[0].name %><i class="bx bxs-user-plus"></i
+      ></a>
+      <% } %> <% if(logout) { %>
+      <form action="/user/logout?_method=DELETE" method="post">
+        <button type="submit" class="auth-btn">
+          Logout<i class="bx bxs-user-minus"></i>
+        </button>
+      </form>
+      <% } %>
+    </div>
+  </div>
+</nav>
+<div class="sidebar-section">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../images/logo.svg" class="logo" alt="logo" />
+      <button type="button" class="close-btn"><i class="bx bx-x"></i></button>
+    </div>
+    <ul class="links">
+      <% for(let i = 0; i < links.length; i++) { %>
+      <li><a href="<%= links[i].url %>"><%= links[i].name %></a></li>
+      <% } if(checkout) { %>
+      <li><a href="<%= checkout[0].url %>"><%= checkout[0].name %></a></li>
+      <% } %>
+    </ul>
+    <div class="cart-btn-wrapper">
+      <a href="<%= cart?.[0].url %>" class="cart-btn">
+        <%= cart?.[0].name %>
+        <span class="cart-container">
+          <i class="bx bxs-cart"></i>
+          <span class="cart-value">0</span>
+        </span>
+      </a>
+      <% if(login) { %>
+      <a href="/user<%= login[0].url %>" class="auth-btn"
+        ><%= login[0].name %><i class="bx bxs-user-plus"></i
+      ></a>
+      <% } %> <% if(logout) { %>
+      <form action="/user/logout?_method=DELETE" method="post">
+        <button type="submit" class="auth-btn">
+          Logout<i class="bx bxs-user-minus"></i>
+        </button>
+      </form>
+      <% } %>
+    </div>
+  </aside>
+</div>
+<script>
+  let cart = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [];
+  const _total = cart.reduce((total, item) => total + item.amount, 0);
+  document.querySelector(".cart-value").innerHTML = _total;
+  const sidebar = document.querySelector(".sidebar");
+  const navToggle = document.querySelector(".nav-toggle");
+  const closeSidebar = document.querySelector(".close-btn");
+  navToggle.addEventListener("click", () => {
+    sidebar.classList.contains("show-sidebar") ||
+      sidebar.classList.add("show-sidebar");
+  });
+  closeSidebar.addEventListener("click", () => {
+    sidebar.classList.contains("show-sidebar") &&
+      sidebar.classList.remove("show-sidebar");
+  });
+</script>

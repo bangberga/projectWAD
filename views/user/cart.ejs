@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/cart.css" />
+    <script src="/script/cart.js" defer></script>
+  </head>
+  <body>
+    <%- include('./navbar.ejs', { links, cart, login, logout, checkout }) %>
+    <main>
+      <section class="page-hero">
+        <div class="section-center">
+          <h3><a href="/">Home </a>/ Cart</h3>
+        </div>
+      </section>
+      <main class="page">
+        <section class="section section-center">
+          <div>
+            <div class="content">
+              <h5>item</h5>
+              <h5>price</h5>
+              <h5>quantity</h5>
+              <h5>subtotal</h5>
+              <span></span>
+            </div>
+            <hr />
+          </div>
+          <hr />
+          <div class="link-container">
+            <a href="/products" class="link-btn">continue shopping</a>
+            <button type="button" class="link-btn clear-btn">
+              clear shopping cart
+            </button>
+          </div>
+          <section>
+            <div>
+              <article>
+                <h5>subtotal : <span subtotal></span></h5>
+                <p>shipping fee : <span shippingfee></span></p>
+                <hr />
+                <h4>order total : <span ordertotal></span></h4>
+              </article>
+              <% if(checkout) { %>
+              <a href="/checkout" class="btn">proceed to checkout</a>
+              <% } else{ %>
+              <a href="/user/login" class="btn">login</a>
+              <% } %>
+            </div>
+          </section>
+        </section>
+      </main>
+    </main>
+    <%- include('./footer.ejs') %>
+  </body>
+</html>

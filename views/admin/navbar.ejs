@@ -1,0 +1,54 @@
+<nav class="sidebar-nav">
+  <div>
+    <ul class="links">
+      <li>
+        <a href="/admin/addProduct"
+          ><i class="bx bx-store"></i>insert products</a
+        >
+      </li>
+      <li>
+        <a href="/admin/transactions"
+          ><i class="bx bx-receipt"></i>transactions</a
+        >
+      </li>
+      <li>
+        <a href="/admin/editProducts"
+          ><i class="bx bxs-edit"></i>edit products</a
+        >
+      </li>
+      <li>
+        <a href="/admin/addProduct/addNewDiscount"
+          ><i class="bx bxs-discount"></i>discounts</a
+        >
+      </li>
+      <li>
+        <a href="/admin/addProduct/addNewCategory"
+          ><i class="bx bx-category"></i>categories</a
+        >
+      </li>
+      <li>
+        <a href="/admin/addProduct/addNewCompany"
+          ><i class="bx bx-building"></i>companies</a
+        >
+      </li>
+    </ul>
+    <button type="button" class="close-btn">
+      <i class="bx bxs-chevron-up"></i>
+    </button>
+  </div>
+</nav>
+<button type="button" class="open-btn">
+  <i class="bx bxs-chevron-down"></i>
+</button>
+<script>
+  const openBtn = document.querySelector(".open-btn");
+  const nav = document.querySelector(".sidebar-nav");
+  const closeBtn = document.querySelector(".close-btn");
+  openBtn.addEventListener("click", () => {
+    nav.classList.contains("show-sidebar") || nav.classList.add("show-sidebar");
+  });
+  closeBtn.addEventListener("click", () => {
+    nav.classList.contains("show-sidebar") &&
+      nav.classList.remove("show-sidebar");
+  });
+</script>

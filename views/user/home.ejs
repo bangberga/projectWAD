@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/homepage.css" />
+    <script src="/script/home.js" defer></script>
+  </head>
+  <body>
+    <%- include('./navbar.ejs', { links, cart, login, logout, checkout }) %>
+    <main>
+      <section class="section-center">
+        <article class="content">
+          <h1>design your <br />comfort zone</h1>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo sit
+            veritatis in ad quaerat labore porro vitae odio, sunt laudantium
+            ipsam similique totam? Dolores id odio perferendis doloremque
+            voluptates placeat laborum molestias?
+          </p>
+          <a href="/products" class="btn hero-btn">shop now</a>
+        </article>
+        <article class="img-container">
+          <img
+            src="../images/hero-bcg.a876f19f.jpeg"
+            alt="nice table"
+            class="main-img"
+          />
+          <img
+            src="../images/hero-bcg-2.78991864.jpeg"
+            alt="person working"
+            class="accent-img"
+          />
+        </article>
+      </section>
+      <section class="section">
+        <div class="title">
+          <h2>new products</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="section-center featured"></div>
+        <a href="/products" class="btn">all products</a>
+      </section>
+      <section class="services">
+        <div class="section-center">
+          <article class="header">
+            <h3>
+              Custom Furniture <br />
+              Built Only For You
+            </h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+              facere nesciunt, magni mollitia eum natus exercitationem tempora
+              libero alias, nulla incidunt fuga aspernatur molestias modi?
+            </p>
+          </article>
+          <div class="services-center">
+            <article class="service">
+              <span class="icon"><i class="bx bx-compass"></i></span>
+              <h4>mission</h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+                sequi eveniet illo accusamus nam a aliquid alias assumenda,
+                pariatur quo.
+              </p>
+            </article>
+            <article class="service">
+              <span class="icon"><i class="bx bx-diamond"></i></span>
+              <h4>vision</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ducimus voluptatum perferendis est facere autem repellendus
+                culpa eligendi error repellat ipsam.
+              </p>
+            </article>
+            <article class="service">
+              <span class="icon"><i class="bx bx-notepad"></i></span>
+              <h4>history</h4>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Repellendus, saepe? Ullam beatae quia id deleniti consequuntur
+                veniam ab! Tempore, velit.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="contact">
+        <div class="section-center">
+          <h3>Join our newsletter and get 20% off</h3>
+          <div class="content">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+              cumque fugiat alias deleniti corrupti dolores, sapiente aliquid
+              dignissimos sed atque eligendi ipsam, praesentium beatae quod.
+            </p>
+            <form class="contact-form">
+              <input
+                type="text"
+                class="form-input"
+                placeholder="enter message"
+              />
+              <button type="submit" class="submit-btn">subcribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <%- include('./footer.ejs') %>
+  </body>
+</html>

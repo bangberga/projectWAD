@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add new product</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/admin.css" />
+    <script src="/script/form-app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <%- include('./navbar.ejs') %>
+      <div class="form-section">
+        <section>
+          <h1>Add new product</h1>
+          <form
+            action="/admin/addProduct"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div>
+              <label for="name">Name of product:</label>
+              <div class="normal">
+                <i class="bx bx-edit-alt"></i>
+                <input type="text" name="name" id="name" required />
+              </div>
+            </div>
+            <div>
+              <label for="quantity">Quantity:</label>
+              <div class="normal">
+                <i class="bx bx-package"></i>
+                <input
+                  type="number"
+                  name="quantity"
+                  id="quantity"
+                  min="1"
+                  value="1"
+                />
+              </div>
+            </div>
+            <div price>
+              <label for="price">Price: ($)</label>
+              <div class="normal">
+                <i class="bx bx-dollar-circle"></i>
+                <input type="text" name="price" id="price" required />
+              </div>
+            </div>
+            <div>
+              <label for="discout">Discount:</label>
+              <div class="select">
+                <select name="discount" id="discount">
+                  <% for(let i = 0; i < discounts.length; i++) { %>
+                  <option value="<%= discounts[i].id %>">
+                    Name: <%= discounts[i].name %>, Sale: <%=
+                    discounts[i].percent * 100 %>%
+                  </option>
+                  <% } %>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="category">Category:</label>
+              <div class="select">
+                <select name="category" id="category">
+                  <% for(let i = 0; i < categories.length; i++) { %>
+                  <option value="<%= categories[i].id %>">
+                    <%= categories[i].name %>
+                  </option>
+                  <% } %>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="company">Company:</label>
+              <div class="select">
+                <select name="company" id="company">
+                  <% for(let i = 0; i < companies.length; i++) { %>
+                  <option value="<%= companies[i].id %>">
+                    <%= companies[i].name %>
+                  </option>
+                  <% } %>
+                </select>
+              </div>
+            </div>
+            <div image>
+              <label for="image-link">Image link:</label>
+              <div>
+                <input
+                  type="file"
+                  name="image_link"
+                  id="image"
+                  accept="image/*"
+                />
+                <div class="choosenImage"></div>
+              </div>
+            </div>
+            <div images>
+              <label for="images">Image list:</label>
+              <div>
+                <input
+                  type="file"
+                  name="image_list"
+                  id="images"
+                  accept="image/*"
+                  multiple
+                />
+                <div class="choosenImages"></div>
+              </div>
+            </div>
+            <div colors>
+              <label for="color">Colors:</label>
+              <div class="colors">
+                <div id="swatch">
+                  <input type="color" id="color" value="#ff0000" />
+                  <div class="info">
+                    <h1>Input</h1>
+                    <h2>Color</h2>
+                  </div>
+                </div>
+                <input type="hidden" name="colors" id="hiddenColors" />
+              </div>
+            </div>
+            <div>
+              <label for="sku">SKU:</label>
+              <div class="normal">
+                <i class="bx bx-barcode"></i>
+                <input type="text" name="sku" id="sku" required />
+              </div>
+            </div>
+            <div>
+              <label for="description">Description:</label>
+              <div class="desc">
+                <textarea
+                  name="description"
+                  id="description"
+                  cols="40"
+                  rows="7"
+                  placeholder="Some description about the product..."
+                ></textarea>
+              </div>
+            </div>
+            <% if(messages.successMsg) { %>
+            <strong class="success"><%= messages.successMsg %></strong>
+            <% } %>
+            <button type="submit" class="btn">Insert new product</button>
+          </form>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
