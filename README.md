@@ -1,0 +1,8 @@
+## .env
+
+PORT =
+DATABASE =
+HOST =
+USER =
+PASSWORD =
+SESSION_SECRET =
