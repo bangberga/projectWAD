@@ -40,6 +40,7 @@ const {
 } = require("./controllers/client");
 
 const {
+  findAdmin,
   getAll,
   upload,
   insertNewProduct,
@@ -106,6 +107,10 @@ const getNavs = async (req, res, next) => {
 };
 const storeThisPage = (req, res, next) => {
   req.session.returnTo = req.originalUrl;
+  next();
+};
+const isAdmin = (req, res, next) => {
+  if (!req.session.admin) return res.redirect("/admin/login");
   next();
 };
 
@@ -306,7 +311,7 @@ app.post("/user/register", isValidPassword, async (req, res) => {
       insertNewClient(req.body)
         .then((r) => {
           req.flash("message", "Registered sucessfully!");
-          res.redirect("/user/register");
+          res.redirect("/user/login");
         })
         .catch((e) => {
           req.flash("message", "Something wrong!");
@@ -405,11 +410,29 @@ app.post(
 );
 
 app.get("/admin/login", (req, res) => {
+  if (req.session.admin) return res.redirect("/admin/addProduct");
   res.render("./admin/login");
 });
 
+app.post("/admin/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const response = await findAdmin(email, password);
+    if (response.success) {
+      req.session.admin = email;
+      req.flash("successMsg", response.message);
+      return res.redirect("/admin/addProduct");
+    }
+    req.flash("failedMsg", response.message);
+    res.redirect(req.url);
+  } catch (error) {
+    req.flash("errorMsg", error);
+    res.status(500).render("./error/errorserver");
+  }
+});
+
 // get page insert new products
-app.get("/admin/addProduct", async (req, res) => {
+app.get("/admin/addProduct", isAdmin, async (req, res) => {
   try {
     const [discounts, categories, companies] = await Promise.all([
       getAll("discount"),
@@ -424,7 +447,7 @@ app.get("/admin/addProduct", async (req, res) => {
 });
 
 // get page insert new category, company, discount
-app.get("/admin/addProduct/addNew:type", async (req, res) => {
+app.get("/admin/addProduct/addNew:type", isAdmin, async (req, res) => {
   const { type } = req.params;
   if (type !== "Discount" && type !== "Category" && type !== "Company")
     return res.status(404).render("./error/error");
@@ -502,7 +525,7 @@ app.post(
 );
 
 // get transactions page
-app.get("/admin/transactions", async (req, res) => {
+app.get("/admin/transactions", isAdmin, async (req, res) => {
   try {
     res.render("./admin/transactions", {
       transactions: await getTransactions(),
@@ -514,7 +537,7 @@ app.get("/admin/transactions", async (req, res) => {
 });
 
 // get ordered items list
-app.get("/admin/transactions/:id", async (req, res) => {
+app.get("/admin/transactions/:id", isAdmin, async (req, res) => {
   try {
     const { id } = req.params;
     const { products, max } = await getOrders(id);
@@ -526,7 +549,7 @@ app.get("/admin/transactions/:id", async (req, res) => {
 });
 
 // get products page
-app.get("/admin/editProducts", async (req, res) => {
+app.get("/admin/editProducts", isAdmin, async (req, res) => {
   try {
     res.render("./admin/editproducts", {
       products: await getProducts(),
@@ -539,7 +562,7 @@ app.get("/admin/editProducts", async (req, res) => {
 });
 
 // get page to edit
-app.get("/admin/editProducts/:id", async (req, res) => {
+app.get("/admin/editProducts/:id", isAdmin, async (req, res) => {
   try {
     const { id } = req.params;
     const [discounts, categories, companies, product, nullProducts] =

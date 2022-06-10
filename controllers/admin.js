@@ -1,5 +1,24 @@
 const { connection } = require("../connect");
 const multer = require("multer");
+const bcrypt = require("bcrypt");
+
+const findAdmin = async (email, password) => {
+  try {
+    const admin = await new Promise((resolve, reject) => {
+      const query = `SELECT * FROM admin WHERE email = ?;`;
+      connection.query(query, [email], (err, result) => {
+        if (err) reject(new Error(err.message));
+        resolve(result[0]);
+      });
+    });
+    if (!admin) return { success: false, message: "Admin not found" };
+    if (await bcrypt.compare(password, admin.password))
+      return { success: true, message: "Login successfully!" };
+    return { success: false, message: "Wrong password" };
+  } catch (error) {
+    throw error;
+  }
+};
 
 // get all types
 const getAll = async (type) => {
@@ -54,7 +73,7 @@ const insertNewProduct = async (products, images) => {
       connection.query(
         query,
         [
-          name,
+          name.trim(),
           quantity,
           image_link[0].filename,
           JSON.stringify(imgs),
@@ -339,6 +358,7 @@ const deleteProduct = async (id) => {
 };
 
 module.exports = {
+  findAdmin,
   addNew,
   getAll,
   insertNewProduct,

@@ -77,10 +77,10 @@ const getAllProductsBy = async (name, category, company, price, order) => {
   try {
     switch (order) {
       case "price-lowest":
-        order = "price ASC";
+        order = "total ASC";
         break;
       case "price-highest":
-        order = "price DESC";
+        order = "total DESC";
         break;
       case "name-a":
         order = "product.name ASC";
@@ -92,7 +92,7 @@ const getAllProductsBy = async (name, category, company, price, order) => {
         order = "";
     }
     return await new Promise((resolve, reject) => {
-      const query = `SELECT product.id, product.name AS product_name, qty, image_list, description, price, discount.id AS discount_id, discount.name AS discount_name, discount.percent AS discount, category.name AS category_name, company.name AS company_name, viewed, color_list, bought, created, status, SKU, image_link FROM product INNER JOIN category ON product.category_id = category.id INNER JOIN company ON product.company_id = company.id INNER JOIN discount ON product.discount = discount.id WHERE product.qty > 0 AND product.price <= ${price} ${
+      const query = `SELECT product.id, product.name AS product_name, qty, image_list, description, price, product.price - product.price * discount.percent AS total, discount.id AS discount_id, discount.name AS discount_name, discount.percent AS discount, category.name AS category_name, company.name AS company_name, viewed, color_list, bought, created, status, SKU, image_link FROM product INNER JOIN category ON product.category_id = category.id INNER JOIN company ON product.company_id = company.id INNER JOIN discount ON product.discount = discount.id WHERE product.qty > 0 AND product.price <= ${price} ${
         name && `AND product.name LIKE '${name}%'`
       } ${category && `AND product.category_id = ${category}`} ${
         company && `AND product.company_id = ${company}`

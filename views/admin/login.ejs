@@ -17,7 +17,7 @@
       <div class="form-section">
         <section>
           <h1>Login</h1>
-          <form action="/admin/login">
+          <form action="/admin/login" method="post">
             <div>
               <label for="email">Email</label>
               <div>
@@ -32,6 +32,9 @@
                 <input type="password" id="password" name="password" required />
               </div>
             </div>
+            <% if(messages.failedMsg) { %>
+            <strong class="fail"><%= messages.failedMsg %></strong>
+            <% } %>
             <button type="submit" class="btn">Login</button>
           </form>
         </section>
