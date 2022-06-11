@@ -20,7 +20,7 @@ SESSION_SECRET =
 
 ## To run the project
 
-npm install to install all the modules in package.json
+npm install 
 npm start
 
 ## Contributions
